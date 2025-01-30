@@ -31,11 +31,7 @@ async function restart() {
                 hour12: true
             });
             
-            exec("sudo systemctl status tomcat", (error, stdout, stderr) => {
-                if (error) {
-                    console.error("Failed to restart server");
-                }
-
+            exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
                 console.log("Restart tomcat success:", formatDate);
                 console.log("stdout: ", stdout);
             });
@@ -45,6 +41,11 @@ async function restart() {
     });
 
     await new Promise(resolve => setTimeout(resolve, 30000)); // 30000 = 30 sec, 3600000 = 1 hour
+
+    exec("sudo systemctl status tomcat", (error, stdout, stderr) => {
+        console.log("Restart tomcat success:", formatDate);
+        console.log("stdout: ", stdout);
+    });
 }
 
 server.listen(port, (err) => {
