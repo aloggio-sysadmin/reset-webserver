@@ -34,10 +34,10 @@ async function restart() {
             exec("sudo systemctl status tomcat", (error, stdout, stderr) => {
                 if (error) {
                     console.error("Failed to restart server");
-                } else {
-                    console.log("Restart tomcat success:", formatDate);
-                    console.log("stdout: ", stdout);
                 }
+
+                console.log("Restart tomcat success:", formatDate);
+                console.log("stdout: ", stdout);
             });
         } else {
             console.log("error: ", error);
