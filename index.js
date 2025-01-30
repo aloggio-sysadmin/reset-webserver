@@ -37,6 +37,10 @@ async function restart() {
                         console.log("Failed to restart: ", error);
                     }
 
+                    if (error) {
+                        console.log("Failed to restart: ", error);
+                    }
+
                     console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
                 });
             } else {
