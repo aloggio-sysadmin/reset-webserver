@@ -4,14 +4,14 @@ const { exec } = require("child_process");
 async function restart() {
     while (true) {
         // This will wait until the response is given, might take a few seconds or a minute if response is 504
-        await axios.get("https://aabode.com/")
+        await axios.get("https://aasdfsdfdsfdsfsdbode.com/")
         .then(response => {
             // Site is working
             console.log("Site is working..");
         })
         .catch(async err => {
             let error = err;
-            
+            error.status = 504;
             if (error.status && error.status == 504) {
                 const date = new Date(Date.now());
                 const formatDate = date.toLocaleString("en-AU", {
@@ -40,7 +40,7 @@ async function restart() {
             }
         });
 
-        await new Promise(resolve => setTimeout(resolve, 300000)); // 300000 = 5 minutes // 10000 = 10 seconds
+        await new Promise(resolve => setTimeout(resolve, 10000)); // 300000 = 5 minutes // 10000 = 10 seconds
     }
 }
 
