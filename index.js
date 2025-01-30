@@ -28,27 +28,20 @@ async function restart() {
                 
                 // exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
                 exec("date", (execError, stdout, stderr) => {
-                    console.log("error: ", execError);
-                    console.log("error: ", typeof execError);
-                    console.log("stdout: ", stdout);
-                    console.log("stderr: ", stderr);
-
-                    if (execError != null) {
-                        console.log("Failed to restart: ", execError);
+                    if (execError) {
+                        console.log("Failed to restart tomcat server: ", execError);
+                        console.log("stdout: ", stdout);
+                        console.log("stderr: ", stderr);
+                    } else {
+                        console.log("Restart tomcat success:", formatDate, stdout, execError, stderr);
                     }
-
-                    if (execError == null) {
-                        console.log("Error is null");
-                    }
-
-                    console.log("Restart tomcat success:", formatDate, stdout, execError, stderr);
                 });
             } else {
                 console.log("error: ", error);
             }
         });
 
-        await new Promise(resolve => setTimeout(resolve, 300000)); // 300000 = 5 minutes // 10000 = 10 seconds
+        await new Promise(resolve => setTimeout(resolve, 10000)); // 300000 = 5 minutes // 10000 = 10 seconds
     }
 }
 
