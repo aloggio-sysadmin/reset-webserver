@@ -25,7 +25,7 @@ async function restart() {
                     hour12: true
                 });
                 
-                exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
+                exec("sudo systemctl restart tomcat", (execError, stdout, stderr) => {
                 // exec("date", (execError, stdout, stderr) => {
                     if (execError) {
                         console.log("Failed to restart tomcat server: ", execError);
