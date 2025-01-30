@@ -41,7 +41,7 @@ async function restart() {
             }
         });
 
-        await new Promise(resolve => setTimeout(resolve, 10000)); // 300000 = 5 minutes // 10000 = 10 seconds
+        await new Promise(resolve => setTimeout(resolve, 300000)); // 300000 = 5 minutes // 10000 = 10 seconds
     }
 }
 
