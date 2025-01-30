@@ -37,8 +37,8 @@ async function restart() {
                         console.log("Failed to restart: ", execError);
                     }
 
-                    if (execError) {
-                        console.log("Failed to restart: ", execError);
+                    if (execError == null) {
+                        console.log("Error is null");
                     }
 
                     console.log("Restart tomcat success:", formatDate, stdout, execError, stderr);
