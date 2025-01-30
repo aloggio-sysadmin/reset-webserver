@@ -33,7 +33,7 @@ async function restart() {
                         console.log("stdout: ", stdout);
                         console.log("stderr: ", stderr);
                     } else {
-                        console.log("Restart tomcat success:", formatDate, stdout, execError, stderr);
+                        console.log("Restart tomcat success:", formatDate);
                     }
                 });
             } else {
