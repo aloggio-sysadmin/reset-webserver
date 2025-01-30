@@ -30,10 +30,11 @@ async function restart() {
                 second: "2-digit",
                 hour12: true
             });
+            console.log("Reset");
             
-            exec("ls", (error, stdout, stderr) => {
-                console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
-            });
+            // exec("ls", (error, stdout, stderr) => {
+            //     console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
+            // });
         } else {
             console.log("error: ", error);
         }
