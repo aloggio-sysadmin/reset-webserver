@@ -4,7 +4,7 @@ const { exec } = require("child_process");
 async function restart() {
     while (true) {
         // This will wait until the response is given, might take a few seconds or a minute if response is 504
-        await axios.get("https://aasdfsdfdsfsdfsdfbode.com/")
+        await axios.get("https://aabode.com/")
         .then(response => {
             // Site is working
             console.log("Site is working..");
