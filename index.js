@@ -48,6 +48,7 @@ server.listen(port, (err) => {
         process.exit(1);
     } else {
         console.log(`Server listening on port ${port}`);
-        restart();
     }
 });
+
+restart();
