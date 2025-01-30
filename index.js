@@ -11,7 +11,6 @@ async function restart() {
         })
         .catch(async err => {
             let error = err;
-            error.status = 504;
             
             if (error.status && error.status == 504) {
                 const date = new Date(Date.now());
@@ -26,8 +25,8 @@ async function restart() {
                     hour12: true
                 });
                 
-                // exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
-                exec("date", (execError, stdout, stderr) => {
+                exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
+                // exec("date", (execError, stdout, stderr) => {
                     if (execError) {
                         console.log("Failed to restart tomcat server: ", execError);
                         console.log("stdout: ", stdout);
