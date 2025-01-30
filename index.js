@@ -27,21 +27,21 @@ async function restart() {
                 });
                 
                 // exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
-                exec("date", (error, stdout, stderr) => {
-                    console.log("error: ", error);
-                    console.log("error: ", typeof error);
+                exec("date", (execError, stdout, stderr) => {
+                    console.log("error: ", execError);
+                    console.log("error: ", typeof execError);
                     console.log("stdout: ", stdout);
                     console.log("stderr: ", stderr);
 
-                    if (error != null) {
-                        console.log("Failed to restart: ", error);
+                    if (execError != null) {
+                        console.log("Failed to restart: ", execError);
                     }
 
-                    if (error) {
-                        console.log("Failed to restart: ", error);
+                    if (execError) {
+                        console.log("Failed to restart: ", execError);
                     }
 
-                    console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
+                    console.log("Restart tomcat success:", formatDate, stdout, execError, stderr);
                 });
             } else {
                 console.log("error: ", error);
