@@ -31,7 +31,7 @@ async function restart() {
                 hour12: true
             });
             
-            exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
+            exec("ls", (error, stdout, stderr) => {
                 console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
             });
         } else {
