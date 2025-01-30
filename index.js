@@ -1,16 +1,10 @@
-const http = require("http");
 const axios = require("axios");
 const { exec } = require("child_process");
-const port = 3000;
-
-const server = http.createServer(function(req, res) {
-    res.end();
-});
 
 async function restart() {
     while (true) {
         // This will wait until the response is given, might take a few seconds or a minute if response is 504
-        await axios.get("https://asdasdfasdf.com/")
+        await axios.get("https://aasdfsdfdsfsdfsdfbode.com/")
         .then(response => {
             // Site is working
             console.log("Site is working..");
@@ -32,7 +26,12 @@ async function restart() {
                     hour12: true
                 });
                 
+                // exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
                 exec("sudo systemctl restart tomcat", (error, stdout, stderr) => {
+                    console.log("error: ", error);
+                    console.log("stdout: ", stdout);
+                    console.log("stderr: ", stderr);
+                    
                     console.log("Restart tomcat success:", formatDate, stdout, error, stderr);
                 });
             } else {
@@ -40,16 +39,8 @@ async function restart() {
             }
         });
 
-        await new Promise(resolve => setTimeout(resolve, 10000)); // 300000 = 5 minutes
+        await new Promise(resolve => setTimeout(resolve, 300000)); // 300000 = 5 minutes // 10000 = 10 seconds
     }
 }
 
-server.listen(port, (err) => {
-    if (err) {
-        console.log(`Unable to listen to port ${port}`);
-        process.exit(1);
-    } else {
-        console.log(`Server listening on port ${port}`);
-        restart();
-    }
-});
+restart();
