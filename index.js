@@ -21,9 +21,7 @@ async function restart() {
             // Site is working
             console.log("Site is working: ", formatDate);
         })
-        .catch(async err => {
-            let error = err;
-            // error.status = 504;
+        .catch(async error => {
             if (error.status && error.status == 504) {
                 exec("sudo systemctl restart tomcat", (execError, stdout, stderr) => {
                 // exec("date", (execError, stdout, stderr) => {
