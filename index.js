@@ -15,7 +15,6 @@ async function restart() {
             hour12: true
         });
 
-        // This will wait until the response is given, might take a few seconds or a minute if response is 504
         await axios.get("https://aabode.com/")
         .then(response => {
             // Site is working
