@@ -16,7 +16,7 @@ async function restart() {
         });
 
         // This will wait until the response is given, might take a few seconds or a minute if response is 504
-        await axios.get("https://aabode.com/")
+        await axios.get("https://httpstat.us/504")
         .then(response => {
             // Site is working
             console.log("Site is working: ", formatDate);
