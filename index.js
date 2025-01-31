@@ -3,28 +3,28 @@ const { exec } = require("child_process");
 
 async function restart() {
     while (true) {
+        const date = new Date(Date.now());
+        const formatDate = date.toLocaleString("en-AU", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        });
+
         // This will wait until the response is given, might take a few seconds or a minute if response is 504
         await axios.get("https://aabode.com/")
         .then(response => {
             // Site is working
-            console.log("Site is working..");
+            console.log("Site is working: ", formatDate);
         })
         .catch(async err => {
             let error = err;
             // error.status = 504;
             if (error.status && error.status == 504) {
-                const date = new Date(Date.now());
-                const formatDate = date.toLocaleString("en-AU", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hour12: true
-                });
-                
                 exec("sudo systemctl restart tomcat", (execError, stdout, stderr) => {
                 // exec("date", (execError, stdout, stderr) => {
                     if (execError) {
